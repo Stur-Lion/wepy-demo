@@ -1,5 +1,10 @@
 <style lang="less">
-
+  .container{
+    padding: 120px 0;
+    font-size: 20px;
+    font-family: "微软雅黑";
+    font-weight: 600;
+  }
 </style>
 <template>
   <view class="container">
@@ -11,7 +16,7 @@
   import wepy from 'wepy'
   export default class demo extends wepy.page {
     config = {
-      navigationBarTitleText: 'test'
+      navigationBarTitleText: 'Lion'
     }
     data = {
       message: 'Hello World'
