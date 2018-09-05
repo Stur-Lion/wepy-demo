@@ -21,5 +21,23 @@
     data = {
       message: 'Hello World'
     }
+    onShareAppMessage = function (res) {
+      if (res.from === 'button') {
+        // 来自页面内转发按钮
+        console.log(res.target)
+      }
+      return {
+        title: '自定义转发标题',
+        path: '/page/demo'
+      }
+    }
+    onShow = function() {
+      wepy.showShareMenu({
+        withShareTicket: true,
+        success: function () {
+          console.log(1)
+        }
+      })
+    }
   }
 </script>
