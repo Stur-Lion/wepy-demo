@@ -1,14 +1,27 @@
 <style lang="less">
-  .container{
+  .container {
     padding: 120px 0;
     font-size: 20px;
     font-family: "微软雅黑";
     font-weight: 600;
+    text-align: center;
+  }
+  .userinfo-avatar {
+    width: 200rpx;
+    height: 200rpx;
+    margin-bottom: 20px;
+    border-radius: 50%;
   }
 </style>
 <template>
   <view class="container">
-    <view>{{ message }}</view>
+    <button wx:if="{{!userInfo}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+    <view wx:if="{{userInfo}}">
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"/>
+      <view>{{userInfo.nickName}}</view>
+      <br>
+      <view>{{message}}</view>
+    </view>
   </view>
 </template>
 
@@ -19,7 +32,8 @@
       navigationBarTitleText: 'Lion'
     }
     data = {
-      message: 'Hello World'
+      message: 'Hello World',
+      userInfo: null
     }
     onShareAppMessage = function (res) {
       if (res.from === 'button') {
@@ -31,13 +45,23 @@
         path: '/page/demo'
       }
     }
-    onShow = function() {
+    onLoad = function () {
+      this.$parent.getUserInfo(function (userInfo) {
+        console.log(userInfo)
+      })
+    }
+    onShow = function () {
       wepy.showShareMenu({
         withShareTicket: true,
         success: function () {
           console.log(1)
         }
       })
+    }
+    methods = {
+      bindGetUserInfo: function (e) {
+        this.userInfo = e.detail.userInfo
+      }
     }
   }
 </script>
