@@ -1,10 +1,15 @@
 <style lang="less">
   .container {
-    padding: 120px 0;
+    /*padding: 120px 0;*/
     font-size: 20px;
     font-family: "微软雅黑";
     font-weight: 600;
     text-align: center;
+    height: 100%;
+    image{
+      display: block;
+      width: 100%;
+    }
   }
   .userinfo-avatar {
     width: 200rpx;
@@ -15,13 +20,18 @@
 </style>
 <template>
   <view class="container">
-    <button wx:if="{{!userInfo}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+    <!--<button wx:if="{{!userInfo}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
     <view wx:if="{{userInfo}}">
       <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"/>
       <view>{{userInfo.nickName}}</view>
       <br>
       <view>{{message}}</view>
-    </view>
+    </view>-->
+
+    <image src="https://lionynn.cn/images/001.jpg" mode="widthFix"/>
+    <image src="https://lionynn.cn/images/002.jpg" mode="widthFix"/>
+    <image src="https://lionynn.cn/images/003.jpg" mode="widthFix"/>
+    <image src="https://lionynn.cn/images/004.jpg" mode="widthFix"/>
   </view>
 </template>
 
